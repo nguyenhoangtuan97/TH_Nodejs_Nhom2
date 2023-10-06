@@ -1,18 +1,19 @@
-<h1 class="text-center">thêm mới user</h1>
-<form action="/insert-new-user" method="post">
-  <div class="mb-3 mt-3">
-    <label for="username" class="form-label">ten dang nhap:</label>
+<h1>edit-user</h1>
+
+
+<form action="/update-user" method="post">
     <input
-      type="text"
+      value="<%= user.username %>"
+      type="hidden"
       class="form-control"
-      id="username"
-      placeholder="Enter username"
+      id="pwd"
+      placeholder="Enter password"
       name="username"
     />
-  </div>
   <div class="mb-3">
     <label for="password" class="form-label">mật khẩu:</label>
     <input
+      value="<%= user.password %>"
       type="password"
       class="form-control"
       id="pwd"
@@ -23,6 +24,7 @@
   <div class="mb-3">
     <label for="fullname" class="form-label">fullname:</label>
     <input
+      value="<%= user.fullname %>"
       type="text"
       class="form-control"
       id="pwd"
@@ -34,6 +36,7 @@
   <div class="mb-3 mt-3">
     <label for="address" class="form-label">Đia chi:</label>
     <input
+      value="<%= user.address %>"
       type="text"
       class="form-control"
       id="address"
@@ -44,6 +47,7 @@
   <div class="mb-3 mt-3">
     <label for="email" class="form-label">email:</label>
     <input
+      value="<%= user.email %>"
       type="email"
       class="form-control"
       id="email"
@@ -58,8 +62,8 @@
       class="form-select"
       aria-label="Default select example"
     >
-      <option value="1">admin</option>
-      <option value="2">user</option>
+    <option <%= user.groupid == 1 ? 'selected' : '' %> value="1">admin</option>
+    <option <%= user.groupid == 2 ? 'selected' : '' %> value="2">user</option>
     </select>
   </div>
 
@@ -71,7 +75,8 @@
         id="radio1"
         name="sex"
         value="1"
-        checked
+        <%= user.sex == 1 ? 'checked' : '' %>
+        
       />Nam
       <label class="form-check-label" for="radio1"></label>
     </div>
@@ -81,6 +86,7 @@
         class="form-check-input"
         id="radio2"
         name="sex"
+        <%= user.sex == 0 ? 'checked' : '' %>
         value="0"
       />Nữ
       <label class="form-check-label" for="radio2"></label>
